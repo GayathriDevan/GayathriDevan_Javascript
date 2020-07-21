@@ -9,18 +9,36 @@
   <script type="text/javascript">
 function validate()
 {
-    var username=document.getElementById("mail-id");
-    var password=document.getElementById("password");
-    if(username.value.trim()=="" ||password.value.trim()=="")
-    {
-        alert("Blank fields are not allowed");
-        return false;
+  var mail=document.getElementById("mail-id").value;
 
-    }
-    else{
-        return true;
+var regx=/^([a-z A-Z 0-9\.-]+)@([a-z A-Z 0-9-]+).([a-z]{2,8})(.[a-z]{2,10})?$/;
+if(regx.test(mail)){
+    document.getElementById("labelmail").innerHTML="Valid";
+    document.getElementById("labelmail").style.visibility="visible";
+    document.getElementById("labelmail").style.color="green";
 
-    }
+}
+else{
+    document.getElementById("labelmail").innerHTML="InValid";
+    document.getElementById("labelmail").style.visibility="visible";
+    document.getElementById("labelmail").style.color="red";
+return false;
+   
+}
+var password=document.getElementById("password").value;
+var regx1=/[a-z A-Z 0-9\.-@!#$%^&*]{8,15}/;
+if(regx1.test(password)){
+    document.getElementById("labelpassword").innerHTML="Valid";
+    document.getElementById("labelpassword").style.visibility="visible";
+    document.getElementById("labelpassword").style.color="green";
+}
+else{
+    document.getElementById("labelpassword").innerHTML="Invalid";
+    document.getElementById("labelpassword").style.visibility="visible";
+    document.getElementById("labelpassword").style.color="red";
+    return false;
+}
+
 }
 </script>  
 </head>
@@ -38,23 +56,31 @@ function validate()
         
         
         <div class="form-bg">
+
             <form onsubmit="return validate()" class="form-sign-in" action="message.html">
                 <div class="form-input-wrapper">
                     <i class="fa fa-user icon"></i>
+                    <input type="text" class="form-input" id="Username" placeholder="Username"/>
+                    <label id="labelusername" style="color:red; visibility: hidden;">Invalid</label>
+                </div>
+               
+                <div class="form-input-wrapper">
+                    <i class="fa fa-envelope icon"></i>
                     <input type="text" class="form-input"  id="mail-id" placeholder="mail@example.com"/>
-                   
+                   <label id="labelmail" style="color:red; visibility: hidden;">Invalid</label>
                 </div>
               
                 <div class="form-input-wrapper">
                     <i class="fa fa-key icon"></i>
                     <input type="password" class="form-input" id="password" placeholder="password"/>
-                    
+                    <label id="labelpassword" style="color:red; visibility: hidden;">Invalid</label>
                 </div>
                 
                 
                 <input  type="submit" value="submit"class="form-btn"/>
                 <br>
-                &nbsp;&nbsp;&nbsp; forgot your password? &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Register!
+                &nbsp;&nbsp;&nbsp;<a href=""> forgot your password? </a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href=""> Register!</a>
                <br><br>
                <hr>
 
